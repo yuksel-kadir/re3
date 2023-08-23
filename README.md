@@ -1,4 +1,5 @@
-# reLCS
+<img src="https://github.com/yuksel-kadir/re3/assets/49368530/75f13e66-6496-4b36-9555-35fd2491b99d" alt="reLCS logo" width="200"><br>   
+
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2FGTAmodding%2Fre3%2Fbadge%3Fref%3Dlcs&style=flat)](https://actions-badge.atrox.dev/GTAmodding/re3/goto?ref=lcs)
 <a href="https://discord.gg/RFNbjsUMGg"><img src="https://img.shields.io/badge/discord-join-7289DA.svg?logo=discord&longCache=true&style=flat" /></a>
 
