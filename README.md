@@ -21,7 +21,7 @@ You may want to point GTA_LCS_RE_DIR environment variable to GTA LCS root folder
 - For Linux, proceed: [Building on Linux](https://github.com/yuksel-kadir/re3/wiki/Building-on-Linux)
 - For FreeBSD, proceed: [Building on FreeBSD](https://github.com/yuksel-kadir/re3/wiki/Building-on-FreeBSD) 
 - For Windows, assuming you have Visual Studio:
-    - Clone the repo using the argument `--recursive` (`git clone --recursive -b lcs https://github.com/td512/re3.git reLCS`).
+    - Clone the repo using the argument `--recursive` (`git clone --recursive -b lcs https://github.com/yuksel-kadir/re3.git reLCS`).
     - Run one of the `premake-vsXXXX.cmd` variants on root folder.
     - Open the project via Visual Studio  
     
