@@ -258,8 +258,8 @@ public:
 		// TODO? validate filesizes
 
 		int WAVE;
-		CLOSE_ON_ERROR(fread(&WAVE, 4, 1, m_pFile) == 0);
-		CLOSE_ON_ERROR(WAVE != 'EVAW')
+		CLOSE_ON_ERROR(fread(&THE_LIBERTY_JAM, 4, 1, m_pFile) == 0);
+		CLOSE_ON_ERROR(THE_LIBERTY_JAM != 'EVAW')
 		CLOSE_ON_ERROR(fread(&DataHeader, sizeof(DataHeader), 1, m_pFile) == 0);
 		CLOSE_ON_ERROR(DataHeader.ID != ' tmf');
 

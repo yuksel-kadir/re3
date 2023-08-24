@@ -75,7 +75,7 @@ cMusicManager::ResetMusicAfterReload()
 	float afRadioTime[NUM_RADIOS];
 
 	m_bRadioSetByScript = FALSE;
-	m_nRadioStationScript = WILDSTYLE;
+	m_nRadioStationScript = HEAD_RADIO;
 	m_nRadioPosition = -1;
 	m_nAnnouncement = NO_TRACK;
 	m_bAnnouncementInProgress = FALSE;
@@ -183,7 +183,7 @@ cMusicManager::Initialise()
 		m_bResetTimers = FALSE;
 		m_nResetTime = 0;
 		m_bRadioSetByScript = FALSE;
-		m_nRadioStationScript = WILDSTYLE;
+		m_nRadioStationScript = HEAD_RADIO;
 		m_nRadioPosition = -1;
 		m_nRadioInCar = NO_TRACK;
 		gRetuneCounter = 0;
@@ -258,7 +258,7 @@ cMusicManager::PlayerInCar()
 uint32
 cMusicManager::GetRadioInCar(void)
 {
-	if (!m_bIsInitialised) return WILDSTYLE;
+	if(!m_bIsInitialised) return HEAD_RADIO;
 	if (PlayerInCar()) {
 		CVehicle* veh = AudioManager.FindVehicleOfPlayer();
 		if (veh != nil) {
@@ -673,7 +673,7 @@ cMusicManager::ServiceGameMode()
 				while (station < 0) station += NUM_RADIOS + 1;
 #endif
 				while (station >= NUM_RADIOS + 1) station -= NUM_RADIOS + 1;
-
+				 
 				// Scrolling back won't hit here, so increasing isn't problem
 				if (!DMAudio.IsMP3RadioChannelAvailable() && station == USERTRACK)
 				{
@@ -1311,16 +1311,16 @@ cMusicManager::DisplayRadioStationName()
 #endif
 			wchar* string = nil;
 			switch (track) {
-			case WILDSTYLE: string = TheText.Get("FEA_FM0"); break;
-			case FLASH_FM: string = TheText.Get("FEA_FM1"); break;
-			case KCHAT: string = TheText.Get("FEA_FM2"); break;
-			case FEVER: string = TheText.Get("FEA_FM3"); break;
-			case V_ROCK: string = TheText.Get("FEA_FM4"); break;
-			case VCPR: string = TheText.Get("FEA_FM5"); break;
-			case RADIO_ESPANTOSO: string = TheText.Get("FEA_FM6"); break;
-			case EMOTION: string = TheText.Get("FEA_FM7"); break;
-			case WAVE: string = TheText.Get("FEA_FM8"); break;
-			case 9: string = TheText.Get("FEA_FM9"); break;
+			case HEAD_RADIO: string = TheText.Get("FEA_FM0"); break;
+			case DOUBLE_CLEFF_FM: string = TheText.Get("FEA_FM1"); break;
+			case K_JAH: string = TheText.Get("FEA_FM2"); break;
+			case RISE_FM: string = TheText.Get("FEA_FM3"); break;
+			case LIPS_106: string = TheText.Get("FEA_FM4"); break;
+			case RADIO_DEL_MUNDO: string = TheText.Get("FEA_FM5"); break;
+			case MSX_98: string = TheText.Get("FEA_FM6"); break;
+			case FLASHBACK_FM: string = TheText.Get("FEA_FM7"); break;
+			case THE_LIBERTY_JAM: string = TheText.Get("FEA_FM8"); break;
+			case LIBERTY_CITY_FREE_RADIO: string = TheText.Get("FEA_FM9"); break;
 			case 10:
 				if (!SampleManager.IsMP3RadioChannelAvailable())
 					return;
