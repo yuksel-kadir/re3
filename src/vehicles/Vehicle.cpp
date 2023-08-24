@@ -174,7 +174,7 @@ CVehicle::CVehicle(uint8 CreatedBy)
 	case MI_ANGEL:
 	case MI_ANGEL2:
 	case MI_FREEWAY:
-		m_nRadioStation = V_ROCK;
+		m_nRadioStation = LIPS_106;
 		break;
 	case MI_RCBARON:
 	case MI_RCBANDIT:

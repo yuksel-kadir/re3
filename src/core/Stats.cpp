@@ -1315,31 +1315,31 @@ CStats::ConstructStatLine(int rowIdx)
 			}
 		}
 		switch (mostListenedRadio) {
-			case WILDSTYLE:
+			case HEAD_RADIO:
 				TEXT_ON_RIGHT(TheText.Get("FEA_FM0"));
 				break;
-			case FLASH_FM:
+			case DOUBLE_CLEFF_FM:
 				TEXT_ON_RIGHT(TheText.Get("FEA_FM1"));
 				break;
-			case KCHAT:
+			case K_JAH:
 				TEXT_ON_RIGHT(TheText.Get("FEA_FM2"));
 				break;
-			case FEVER:
+			case RISE_FM:
 				TEXT_ON_RIGHT(TheText.Get("FEA_FM3"));
 				break;
-			case V_ROCK:
+			case LIPS_106:
 				TEXT_ON_RIGHT(TheText.Get("FEA_FM4"));
 				break;
-			case VCPR:
+			case RADIO_DEL_MUNDO:
 				TEXT_ON_RIGHT(TheText.Get("FEA_FM5"));
 				break;
-			case RADIO_ESPANTOSO:
+			case MSX_98:
 				TEXT_ON_RIGHT(TheText.Get("FEA_FM6"));
 				break;
-			case EMOTION:
+			case FLASHBACK_FM:
 				TEXT_ON_RIGHT(TheText.Get("FEA_FM7"));
 				break;
-			case WAVE:
+			case THE_LIBERTY_JAM:
 				TEXT_ON_RIGHT(TheText.Get("FEA_FM8"));
 				break;
 			case USERTRACK:
@@ -1370,31 +1370,31 @@ CStats::ConstructStatLine(int rowIdx)
 #endif
 
 		switch (leastListenedRadio) {
-			case WILDSTYLE:
+			case HEAD_RADIO:
 				TEXT_ON_RIGHT(TheText.Get("FEA_FM0"));
 				break;
-			case FLASH_FM:
+			case DOUBLE_CLEFF_FM:
 				TEXT_ON_RIGHT(TheText.Get("FEA_FM1"));
 				break;
-			case KCHAT:
+			case K_JAH:
 				TEXT_ON_RIGHT(TheText.Get("FEA_FM2"));
 				break;
-			case FEVER:
+			case RISE_FM:
 				TEXT_ON_RIGHT(TheText.Get("FEA_FM3"));
 				break;
-			case V_ROCK:
+			case LIPS_106:
 				TEXT_ON_RIGHT(TheText.Get("FEA_FM4"));
 				break;
-			case VCPR:
+			case RADIO_DEL_MUNDO:
 				TEXT_ON_RIGHT(TheText.Get("FEA_FM5"));
 				break;
-			case RADIO_ESPANTOSO:
+			case MSX_98:
 				TEXT_ON_RIGHT(TheText.Get("FEA_FM6"));
 				break;
-			case EMOTION:
+			case FLASHBACK_FM:
 				TEXT_ON_RIGHT(TheText.Get("FEA_FM7"));
 				break;
-			case WAVE:
+			case THE_LIBERTY_JAM:
 				TEXT_ON_RIGHT(TheText.Get("FEA_FM8"));
 				break;
 			case USERTRACK:

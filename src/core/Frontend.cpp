@@ -165,6 +165,7 @@ const char* FrontendFilenames[][2] = {
 	{"espantoso", "espantosoA"},
 	{"emotion", "emotionA"},
 	{"wave103", "wave103A"},
+    {"810vcn", "810vcnA"},
 	{"mp3", "mp3A"},
 	{"downOff", "buttonA"},
 	{"downOn", "buttonA"},
@@ -626,10 +627,10 @@ CMenuManager::Initialise(void)
 
 	DMAudio.SetMP3BoostVolume(m_PrefsMP3BoostVolume);
 	if (DMAudio.IsMP3RadioChannelAvailable()) {
-		if (m_PrefsRadioStation < WILDSTYLE || m_PrefsRadioStation > USERTRACK)
+		if (m_PrefsRadioStation < HEAD_RADIO || m_PrefsRadioStation > USERTRACK)
 			m_PrefsRadioStation = CGeneral::GetRandomNumber() % (USERTRACK + 1);
-	} else if (m_PrefsRadioStation < WILDSTYLE || m_PrefsRadioStation > WAVE)
-		m_PrefsRadioStation = CGeneral::GetRandomNumber() % (WAVE + 1);
+	} else if (m_PrefsRadioStation < HEAD_RADIO || m_PrefsRadioStation > LIBERTY_CITY_FREE_RADIO)
+		m_PrefsRadioStation = CGeneral::GetRandomNumber() % (LIBERTY_CITY_FREE_RADIO + 1);
 
 	CFileMgr::SetDir("");
 	//CFileMgr::SetDir("");
@@ -1233,32 +1234,35 @@ CMenuManager::DrawStandardMenus(bool activeScreen)
 					break;
 				case MENUACTION_RADIO:
 					switch (m_PrefsRadioStation) {
-						case WILDSTYLE:
+						case HEAD_RADIO:
 							rightText = TheText.Get("FEA_FM0");
 							break;
-						case FLASH_FM:
+						case DOUBLE_CLEFF_FM:
 							rightText = TheText.Get("FEA_FM1");
 							break;
-						case KCHAT:
+						case K_JAH:
 							rightText = TheText.Get("FEA_FM2");
 							break;
-						case FEVER:
+						case RISE_FM:
 							rightText = TheText.Get("FEA_FM3");
 							break;
-						case V_ROCK:
+						case LIPS_106:
 							rightText = TheText.Get("FEA_FM4");
 							break;
-						case VCPR:
+						case RADIO_DEL_MUNDO:
 							rightText = TheText.Get("FEA_FM5");
 							break;
-						case RADIO_ESPANTOSO:
+						case MSX_98:
 							rightText = TheText.Get("FEA_FM6");
 							break;
-						case EMOTION:
+						case FLASHBACK_FM:
 							rightText = TheText.Get("FEA_FM7");
 							break;
-						case WAVE:
+						case THE_LIBERTY_JAM:
 							rightText = TheText.Get("FEA_FM8");
+							break;
+					    case LIBERTY_CITY_FREE_RADIO: 
+							rightText = TheText.Get("FEA_FM9");
 							break;
 						case USERTRACK:
 							rightText = TheText.Get("FEA_MP3");
@@ -3895,8 +3899,8 @@ CMenuManager::PrintRadioSelector(void)
 		rightMostSprite = MENUSPRITE_MP3;
 		rightMostStation = USERTRACK;
 	} else {
-		rightMostSprite = MENUSPRITE_WAVE;
-		rightMostStation = WAVE;
+		rightMostSprite = MENUSPRITE_810VCN;
+		rightMostStation = LIBERTY_CITY_FREE_RADIO;
 	}
  #ifdef THIS_IS_STUPID
 
@@ -4911,7 +4915,7 @@ CMenuManager::ProcessUserInput(uint8 goDown, uint8 goUp, uint8 optionSelected, u
 					DMAudio.SetCurrent3DProvider(m_nPrefsAudio3DProviderIndex);
 					m_PrefsSfxVolume = 49;
 					m_PrefsMusicVolume = 49;
-					m_PrefsRadioStation = EMOTION;
+					m_PrefsRadioStation = FLASHBACK_FM;
 					m_PrefsMP3BoostVolume = 0;
 					m_PrefsStereoMono = 1;
 					m_PrefsSpeakers = 0;
@@ -5957,15 +5961,15 @@ CMenuManager::ChangeRadioStation(int8 increaseBy)
 	}
 
 	if (DMAudio.IsMP3RadioChannelAvailable()) {
-		if (m_PrefsRadioStation < WILDSTYLE)
+		if (m_PrefsRadioStation < HEAD_RADIO)
 			m_PrefsRadioStation = USERTRACK;
 		if (m_PrefsRadioStation > USERTRACK)
-			m_PrefsRadioStation = WILDSTYLE;
+			m_PrefsRadioStation = HEAD_RADIO;
 	} else {
-		if (m_PrefsRadioStation < WILDSTYLE)
-			m_PrefsRadioStation = WAVE;
-		if (m_PrefsRadioStation > WAVE)
-			m_PrefsRadioStation = WILDSTYLE;
+		if (m_PrefsRadioStation < HEAD_RADIO)
+			m_PrefsRadioStation = LIBERTY_CITY_FREE_RADIO;
+		if(m_PrefsRadioStation > LIBERTY_CITY_FREE_RADIO)
+			m_PrefsRadioStation = HEAD_RADIO;
 	}
 	DMAudio.StopFrontEndTrack();
 	DMAudio.PlayFrontEndSound(SOUND_RADIO_CHANGE, 0);
