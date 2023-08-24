@@ -58,8 +58,10 @@ CRGBA TIMER_COLOR(97, 194, 247, 255);
 CRGBA COUNTER_COLOR(97, 194, 247, 255);
 CRGBA PAGER_COLOR(32, 162, 66, 205);
 CRGBA RADARDISC_COLOR(255, 255, 255, 255);
-CRGBA BIGMESSAGE_COLOR(255, 150, 225, 255);
-CRGBA WASTEDBUSTED_COLOR(0, 207, 133, 255);
+CRGBA BIGMESSAGE_COLOR(255, 255, 128, 255);  // 255, 150, 225
+CRGBA WASTEDBUSTED_COLOR(52, 114, 171, 255); // 0, 207, 133
+CRGBA BUSTED_COLOR(52, 114, 171, 255);
+CRGBA WASTED_COLOR(140, 12, 1, 255);
 CRGBA ODDJOB_COLOR(0, 207, 133, 255);
 CRGBA ODDJOB2_COLOR(97, 194, 247, 255);
 CRGBA MISSIONTITLE_COLOR(220, 172, 2, 255);
@@ -1419,8 +1421,21 @@ void CHud::Draw()
 				CFont::SetDropShadowPosition(2);
 				CFont::SetDropColor(CRGBA(0, 0, 0, BigMessageAlpha[2]));
 
-				CFont::SetColor(CRGBA(WASTEDBUSTED_COLOR.r, WASTEDBUSTED_COLOR.g, WASTEDBUSTED_COLOR.b, BigMessageAlpha[2]));
-				CFont::PrintString(SCREEN_SCALE_FROM_RIGHT(20.0f), SCREEN_SCALE_FROM_BOTTOM(90.0f), m_BigMessage[2]);
+				//Find the player and check the player's current status.
+				CPlayerPed *pPlayerPed = FindPlayerPed();
+				if (pPlayerPed != NULL) {
+					CPlayerInfo* playerInfo = pPlayerPed->GetPlayerInfoForThisPlayerPed();
+					if(playerInfo != NULL) {
+						if(playerInfo->m_WBState == WBSTATE_BUSTED) {
+							CFont::SetColor(CRGBA(BUSTED_COLOR.r, BUSTED_COLOR.g, BUSTED_COLOR.b, BigMessageAlpha[2]));
+						} else if(playerInfo->m_WBState == WBSTATE_WASTED) {
+							CFont::SetColor(CRGBA(WASTED_COLOR.r, WASTED_COLOR.g, WASTED_COLOR.b, BigMessageAlpha[2]));
+						}
+					}				
+				}
+
+				//CFont::SetColor(CRGBA(WASTEDBUSTED_COLOR.r, WASTEDBUSTED_COLOR.g, WASTEDBUSTED_COLOR.b, BigMessageAlpha[2]));
+				CFont::PrintString(SCREEN_SCALE_FROM_RIGHT(280.0f), SCREEN_SCALE_FROM_BOTTOM(290.0f), m_BigMessage[2]);
 			}
 			else {
 				BigMessageInUse[2] = 1.0f;
@@ -1825,7 +1840,7 @@ void CHud::DrawAfterFade()
 			CFont::SetRightJustifyWrap(SCALE_AND_CENTER_X(0.0f));
 			CFont::SetRightJustifyOn();
 			CFont::SetFontStyle(FONT_BANK);
-			CFont::SetScale(FrontEndMenuManager.m_PrefsLanguage == CMenuManager::LANGUAGE_AMERICAN ? SCREEN_SCALE_X(1.7f) : SCREEN_SCALE_X(1.5f), SCREEN_SCALE_Y(1.8f));
+			CFont::SetScale(FrontEndMenuManager.m_PrefsLanguage == CMenuManager::LANGUAGE_AMERICAN ? SCREEN_SCALE_X(1.0f) : SCREEN_SCALE_X(1.5f), SCREEN_SCALE_Y(1.8f));
 
 			if (BigMessageX[1] >= SCREEN_SCALE_FROM_RIGHT(20.0f)) {
 				BigMessageInUse[1] += CTimer::GetTimeStep();
@@ -1852,7 +1867,7 @@ void CHud::DrawAfterFade()
 			CFont::SetDropShadowPosition(2);
 			CFont::SetDropColor(CRGBA(0, 0, 0, BigMessageAlpha[1]));
 			CFont::SetColor(CRGBA(MISSIONTITLE_COLOR.r, MISSIONTITLE_COLOR.g, MISSIONTITLE_COLOR.b, BigMessageAlpha[1]));
-			CFont::PrintString(SCREEN_SCALE_FROM_RIGHT(20.0f), SCREEN_SCALE_FROM_BOTTOM(140.0f), m_BigMessage[1]);
+			CFont::PrintString(SCREEN_SCALE_FROM_RIGHT(20.0f), SCREEN_SCALE_FROM_BOTTOM(70.0f), m_BigMessage[1]);
 		} else {
 			m_ZoneFadeTimer = 0;
 			BigMessageX[1] = SCREEN_SCALE_FROM_RIGHT(DEFAULT_SCREEN_WIDTH + 60.0f);
