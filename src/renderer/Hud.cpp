@@ -1412,7 +1412,7 @@ void CHud::Draw()
 				if (CGame::frenchGame || CGame::germanGame)
 					CFont::SetScale(SCREEN_SCALE_X(1.4f), SCREEN_SCALE_Y(1.4f));
 				else
-					CFont::SetScale(SCREEN_SCALE_X(2.0f), SCREEN_SCALE_Y(2.0f));
+					CFont::SetScale(SCREEN_SCALE_X(2.0f), SCREEN_SCALE_Y(3.0f));
 
 				CFont::SetPropOn();
 				CFont::SetRightJustifyOn();
